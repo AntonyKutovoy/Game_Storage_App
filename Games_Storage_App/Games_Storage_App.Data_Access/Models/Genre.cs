@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace Games_Storage_App.Data_Access
+namespace Games_Storage_App.Data_Access.Models
 {
-    public class Game
+    public class Genre
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Developer { get; set; }
         public List<GameGenre> GameGenres { get; set; }
-        public Game()
+        public Genre()
         {
             GameGenres = new List<GameGenre>();
         }

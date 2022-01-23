@@ -17,7 +17,7 @@ namespace Games_Storage_App.Data_Access
         public Game Get(Guid id)
         {
             var allGames = GetAll();
-            return allGames.FirstOrDefault(p => p.Id == id);
+            return allGames.FirstOrDefault(g => g.Id == id);
         }
 
         public List<Game> GetAll()
