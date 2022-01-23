@@ -1,4 +1,4 @@
-﻿using Games_Storage_App.Models;
+﻿using Games_Storage_App.Data_Access;
 using Microsoft.EntityFrameworkCore;
 
 namespace Games_Storage_App
