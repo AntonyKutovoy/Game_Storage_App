@@ -24,7 +24,7 @@ namespace Games_Storage_App
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<GameContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<GameStorageAppContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
         }
 

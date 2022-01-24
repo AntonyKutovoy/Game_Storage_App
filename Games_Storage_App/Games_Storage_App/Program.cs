@@ -19,8 +19,8 @@ namespace Games_Storage_App
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var gameContext = services.GetRequiredService<GameContext>();
-                GameContextSeeder.Seed(gameContext);
+                var gameContext = services.GetRequiredService<GameStorageAppContext>();
+                GameStorageAppContextSeeder.Seed(gameContext);
             }
             host.Run();
         }

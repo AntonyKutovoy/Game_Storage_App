@@ -9,5 +9,6 @@ namespace Games_Storage_App.Data_Access
         List<Game> GetAll();
         Game Get(Guid id);
         void Create(Game game);
+        void Delete(Guid id);
     }
 }

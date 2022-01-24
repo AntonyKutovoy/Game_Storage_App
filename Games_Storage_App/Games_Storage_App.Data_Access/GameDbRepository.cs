@@ -8,9 +8,9 @@ namespace Games_Storage_App.Data_Access
 {
     public class GameDbRepository : IGameRepository
     {
-        private readonly GameContext gameContext;
+        private readonly GameStorageAppContext gameContext;
 
-        public GameDbRepository(GameContext gameContext)
+        public GameDbRepository(GameStorageAppContext gameContext)
         {
             this.gameContext = gameContext;
         }
@@ -30,5 +30,15 @@ namespace Games_Storage_App.Data_Access
             gameContext.Games.Add(game);
             gameContext.SaveChanges();
         }
+
+        public void Delete(Guid id)
+        {
+
+        }
+
+        //public Game Update(Guid id)
+        //{
+            
+        //}
     }
 }

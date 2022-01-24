@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Games_Storage_App
 {
-    public class GameContext : DbContext
+    public class GameStorageAppContext : DbContext
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Genre> Genres { get; set; }
 
-        public GameContext(DbContextOptions<GameContext> options)
+        public GameStorageAppContext(DbContextOptions<GameStorageAppContext> options)
             : base(options)
         {
             Database.EnsureCreated();

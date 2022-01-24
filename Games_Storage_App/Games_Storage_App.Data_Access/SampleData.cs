@@ -7,7 +7,7 @@ namespace Games_Storage_App
 {
     public class SampleData
     {
-        public static List<Game> GetDefaultGames()
+        public static List<Game> GetDefaultGamesWithGenres()
         {
             var games = new List<Game>();
             games.Add(new Game { Name = "Divinity: Original Sin 2", Developer = "Larian Studios", });
