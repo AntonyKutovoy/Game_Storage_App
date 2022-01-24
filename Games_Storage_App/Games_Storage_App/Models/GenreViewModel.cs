@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Games_Storage_App.Models
 {
-    public class GameViewModel
+    public class GenreViewModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Developer { get; set; }
-        public List<GameGenreViewModel> Genres { get; set; } = new List<GameGenreViewModel>();
     }
 }

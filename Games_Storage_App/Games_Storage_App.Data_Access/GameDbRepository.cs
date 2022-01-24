@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Games_Storage_App.Data_Access.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Games_Storage_App.Data_Access
             return gameContext.Games.AsNoTracking().ToList();
         }
 
-        public void Create(Game game)
+        public void Create(Game game, Genre genre)
         {
             gameContext.Games.Add(game);
             gameContext.SaveChanges();
