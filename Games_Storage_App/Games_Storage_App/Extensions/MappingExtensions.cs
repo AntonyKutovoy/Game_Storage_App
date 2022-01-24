@@ -1,4 +1,5 @@
 ﻿using Games_Storage_App.Data_Access;
+using Games_Storage_App.Data_Access.Models;
 using Games_Storage_App.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,36 @@ namespace Games_Storage_App.Extensions
             {
                 Id = game.Id,
                 Name = game.Name,
-                Developer = game.Developer
+                Developer = game.Developer,
+                Genres = game.GameGenres.ToGameGenresViewModel()
+            };
+        }
+
+        public static List<GameGenreViewModel> ToGameGenresViewModel(this List<GameGenre> gameGenres)
+        {
+            var genres = new List<GameGenreViewModel>();
+            foreach (var gameGenre in gameGenres)
+            {
+                var genre = gameGenre.ToGameGenreViewModel();
+                genres.Add(genre);
+            }
+            return genres;
+        }
+
+        public static GameGenreViewModel ToGameGenreViewModel(this GameGenre gameGenre)
+        {
+            return new GameGenreViewModel
+            {
+                Id = gameGenre.Id,
+                Genre = gameGenre.Genre.ToGenreViewModel()
+            };
+        }
+        public static GenreViewModel ToGenreViewModel(this Genre genre)
+        {
+            return new GenreViewModel()
+            {
+                Id = genre.Id,
+                Name = genre.Name
             };
         }
     }

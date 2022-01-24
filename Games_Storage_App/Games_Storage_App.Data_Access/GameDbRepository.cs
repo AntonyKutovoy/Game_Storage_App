@@ -23,18 +23,22 @@ namespace Games_Storage_App.Data_Access
 
         public List<Game> GetAll()
         {
-            return gameContext.Games.AsNoTracking().ToList();
+            return gameContext.Games.AsNoTracking().Include(c => c.GameGenres).ThenInclude(p => p.Genre).ToList();
+            //return gameContext.Games.AsNoTracking().ToList();
         }
 
         public void Create(Game game, Genre genre)
         {
-            gameContext.Games.Add(game);
+            var newGame = game;
+            gameContext.Games.Add(newGame);
+            newGame.GameGenres.Add(new GameGenre { Game = newGame, Genre = genre, Id = Guid.NewGuid() });
             gameContext.SaveChanges();
         }
 
         public void Delete(Guid id)
         {
-
+            //gameContext.Games.Remove(TryGetByUserId(userId));
+            gameContext.SaveChanges();
         }
 
         //public Game Update(Guid id)

@@ -1,3 +1,5 @@
+using Games_Storage_App.Data_Access;
+using Games_Storage_App.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +27,9 @@ namespace Games_Storage_App
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GameStorageAppContext>(options => options.UseSqlServer(connection));
+            services.AddTransient<GameService>();
+            services.AddTransient<IGameRepository, GameDbRepository>();
+            services.AddTransient<IGenreRepository, GenreDbRepository>();
             services.AddControllersWithViews();
         }
 
