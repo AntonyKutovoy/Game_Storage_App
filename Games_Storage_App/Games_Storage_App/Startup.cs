@@ -28,6 +28,7 @@ namespace Games_Storage_App
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GameStorageAppContext>(options => options.UseSqlServer(connection));
             services.AddTransient<GameService>();
+            services.AddTransient<GenreService>();
             services.AddTransient<IGameRepository, GameDbRepository>();
             services.AddTransient<IGenreRepository, GenreDbRepository>();
             services.AddControllersWithViews();

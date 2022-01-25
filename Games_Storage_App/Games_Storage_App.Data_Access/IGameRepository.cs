@@ -8,8 +8,10 @@ namespace Games_Storage_App.Data_Access
     public interface IGameRepository
     {
         List<Game> GetAll();
-        Game Get(Guid id);
-        void Create(Game game, Genre genre);
+        Game TryGetById(Guid id);
+        Game Create(Game game);
+        Game AddGenre(Guid id, Genre genre);
         void Delete(Guid id);
+        void Update(Game game);
     }
 }

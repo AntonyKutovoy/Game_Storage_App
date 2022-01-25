@@ -48,5 +48,24 @@ namespace Games_Storage_App.Extensions
                 Name = genre.Name
             };
         }
+
+        public static Genre ToGenre(this GenreViewModel genreViewModel)
+        {
+            return new Genre()
+            {
+                Id = genreViewModel.Id,
+                Name = genreViewModel.Name
+            };
+        }
+
+        public static Game ToGameInfo(this GameViewModel gameViewModel)
+        {
+            return new Game()
+            {
+                Id = gameViewModel.Id,
+                Name = gameViewModel.Name,
+                Developer = gameViewModel.Developer
+            };
+        }
     }
 }

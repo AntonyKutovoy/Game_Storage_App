@@ -29,11 +29,57 @@ namespace Games_Storage_App.Services
             return gamesViewModel;
         }
 
+        public void UpdateInfo(GameViewModel game)
+        {
+            gameRepository.Update(game.ToGameInfo());
+        }
+
         public GameViewModel GetGame(Guid id)
         {
-            var game = gameRepository.Get(id);
+            var game = gameRepository.TryGetById(id);
             var gameViewModel = game.ToGameViewModel();
             return gameViewModel;
+        }
+
+        //public GameViewModel AddGenreToGame(GenreViewModel genreViewModel, GameViewModel gameViewModel)
+        //{
+        //    var existingGame = gameRepository.Get(gameViewModel.Id);
+        //    var genre = genreViewModel.ToGenre();
+
+        //    Game game;
+        //    if (existingGame == null)
+        //        game = gameRepository.Create(genre, gameViewModel.ToGameInfo());
+        //    else
+        //        game = gameRepository.AddGenre(existingGame.Id, genre);
+        //    var newGameViewModel = new GameViewModel()
+        //    {
+        //        Id = game.Id,
+        //        Name = game.Name,
+        //        Developer = game.Developer,
+        //        Genres = game.GameGenres.ToGameGenresViewModel()
+        //    };
+        //    return newGameViewModel;
+        //}
+
+        public GameViewModel AddGenreToGame(GenreViewModel genreViewModel, GameViewModel gameViewModel)
+        {
+            var existingGame = gameRepository.TryGetById(gameViewModel.Id);
+            Game game;
+            if (existingGame == null)
+            {
+                game = gameRepository.Create(gameViewModel.ToGameInfo());
+                game = gameRepository.AddGenre(game.Id, genreViewModel.ToGenre());
+            }
+            else
+                game = gameRepository.AddGenre(existingGame.Id, genreViewModel.ToGenre());
+            var newGameViewModel = new GameViewModel()
+            {
+                Id = game.Id,
+                Name = game.Name,
+                Developer = game.Developer,
+                Genres = game.GameGenres.ToGameGenresViewModel()
+            };
+            return newGameViewModel;
         }
     }
 }

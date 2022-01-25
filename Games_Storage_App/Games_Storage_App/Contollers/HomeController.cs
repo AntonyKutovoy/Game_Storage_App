@@ -1,4 +1,5 @@
-﻿using Games_Storage_App.Services;
+﻿using Games_Storage_App.Models;
+using Games_Storage_App.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,8 @@ namespace Games_Storage_App.Contollers
 
         public IActionResult Index()
         {
-            //var games = gameService.GetAllGames();
-            return View();
+            var games = gameService.GetAllGames();
+            return View(games);
         }
     }
 }

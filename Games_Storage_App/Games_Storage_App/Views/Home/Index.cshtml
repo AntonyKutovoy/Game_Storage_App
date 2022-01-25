@@ -1,1 +1,50 @@
-﻿
+﻿@model List<Games_Storage_App.Models.GameViewModel>
+
+<div class="row">
+    <div class="col-md-3 my-4">
+        <div class="list-group ">
+            <a asp-action="GetGames" class="list-group-item list-group-item-action">Список игр</a>
+            <a asp-action="GetGenres" class="list-group-item list-group-item-action">Список жанров</a>
+            <a class="list-group-item list-group-item-action">Поиск по жанрам</a>
+        </div>
+    </div>
+    <div class="col-md-9 my-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Список игр</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 table-responsive">
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Разработчик</th>
+                                    <th>Жанр</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = Model.Count - 1; i >= 0; i--)
+                                {
+                                    var game = Model[i];
+                                    <tr class="table-row" data-href="/Game/GetGame/@game.Id">
+                                        <td>@game.Name</td>
+                                        <td>@game.Developer</td>
+                                        <td>@for (int j = 0; j < game.Genres.Count; j++)
+                                        {
+                                            @game.Genres[j].Genre.Name
+                                        }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
