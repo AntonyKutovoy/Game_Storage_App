@@ -64,9 +64,10 @@ namespace Games_Storage_App.Data_Access
 
         public void DeleteGenre(Game existingGame, Genre genre)
         {
+            var removedGenre = gameStorageAppContext.Genres.Include(s => s.GameGenres).FirstOrDefault(s => s.Id == genre.Id);
             var game = gameStorageAppContext.Games.FirstOrDefault(x => x.Id == existingGame.Id);
-            var gameGenre = game.GameGenres.FirstOrDefault(x => x.GenreId == genre.Id);
-            genre.GameGenres.Remove(gameGenre);
+            var gameGenre = removedGenre.GameGenres.FirstOrDefault(sc => sc.GameId == existingGame.Id);
+            removedGenre.GameGenres.Remove(gameGenre);
             gameStorageAppContext.SaveChanges();
         }
     }

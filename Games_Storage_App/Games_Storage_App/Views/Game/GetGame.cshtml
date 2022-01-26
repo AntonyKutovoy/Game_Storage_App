@@ -20,19 +20,19 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group row">
-                            <label for="name" class="col-4 col-form-label">Название</label>
+                            <label class="col-4 col-form-label">Название</label>
                             <div class="col-8">
                                 <p class="font-weight-normal">@Model.Name</p>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lastname" class="col-4 col-form-label">Разработчик</label>
+                            <label class="col-4 col-form-label">Разработчик</label>
                             <div class="col-8">
                                 <p class="font-weight-normal">@Model.Developer</p>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-4 col-form-label">Жанр</label>
+                            <label class="col-4 col-form-label">Жанр</label>
                             <div class="col-8">
                                 <p class="font-weight-normal">
                                     @for (int j = 0; j < Model.Genres.Count; j++)
@@ -47,7 +47,9 @@
                                 Действия
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" Asp-action="ChangeInformation" Asp-route-id="@Model.Id">Редактировать данные (название, разработчик)</a>
+                                <a class="dropdown-item" Asp-action="ChangeInformation" Asp-route-id="@Model.Id">Редактировать (название, разработчик)</a>
+                                <a class="dropdown-item" Asp-action="UpdateGenres" Asp-route-id="@Model.Id">Добавить/убрать жанр</a>
+                                <a class="dropdown-item" Asp-action="DeleteGame" Asp-route-id="@Model.Id">Удалить игру</a>
                             </div>
                         </div>
                     </div>

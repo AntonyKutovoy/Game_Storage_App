@@ -13,5 +13,6 @@ namespace Games_Storage_App.Data_Access
         Game AddGenre(Guid id, Genre genre);
         void Delete(Guid id);
         void Update(Game game);
+        void DeleteGenre(Game game, Genre genre);
     }
 }

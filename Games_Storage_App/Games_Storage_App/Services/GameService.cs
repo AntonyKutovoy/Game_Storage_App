@@ -81,5 +81,12 @@ namespace Games_Storage_App.Services
             };
             return newGameViewModel;
         }
+
+        public void DeleteGenre(Guid gameGenreId, Guid gameId)
+        {
+            var existingGame = gameRepository.TryGetById(gameId);
+            var gameGenre = existingGame.GameGenres.FirstOrDefault(x => x.Id == gameGenreId);
+            gameRepository.DeleteGenre(existingGame, gameGenre.Genre);
+        }
     }
 }
