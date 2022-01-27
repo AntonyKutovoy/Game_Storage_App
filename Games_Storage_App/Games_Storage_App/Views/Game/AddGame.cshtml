@@ -13,7 +13,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4>Добавление данных</h4>
+                        <h4>Добавлениt новой игры</h4>
                         <hr />
                     </div>
                 </div>
@@ -24,14 +24,14 @@
                             <div class="form-group row">
                                 <label asp-for="@Model.Game.Name" class="col-4 col-form-label">Название</label>
                                 <div class="col-8">
-                                    <input asp-for="@Model.Game.Name" placeholder="Имя" class="form-control here" type="text">
+                                    <input asp-for="@Model.Game.Name" placeholder="Название" class="form-control here" type="text">
                                     <span asp-validation-for="@Model.Game.Name" class="sr-only"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label asp-for="@Model.Game.Developer" class="col-4 col-form-label">Разработчик</label>
                                 <div class="col-8">
-                                    <input asp-for="@Model.Game.Developer" placeholder="Фамилия" class="form-control here" type="text">
+                                    <input asp-for="@Model.Game.Developer" placeholder="Разработчик" class="form-control here" type="text">
                                     <span asp-validation-for="@Model.Game.Developer" class="sr-only"></span>
                                 </div>
                             </div>

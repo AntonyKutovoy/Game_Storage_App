@@ -38,6 +38,20 @@ namespace Games_Storage_App.Services
             return genre.ToGenreViewModel();
         }
 
+        public void DeleteGenre(Guid id)
+        {
+            var genre = genreRepository.Get(id);
+            if (genre != null)
+            {
+                genreRepository.Delete(id);
+            }
+        }
+
+        public void AddGenre(GenreViewModel genre)
+        {
+            genreRepository.Create(genre.ToGenre());
+        }
+
         public void UpdateInfo(GenreViewModel genre)
         {
             genreRepository.Update(genre.ToGenre());

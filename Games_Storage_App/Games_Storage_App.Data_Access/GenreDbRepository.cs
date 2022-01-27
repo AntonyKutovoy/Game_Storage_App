@@ -38,5 +38,11 @@ namespace Games_Storage_App.Data_Access
                 genre.Name = genreInfo.Name;
             gameStorageAppContext.SaveChanges();
         }
+
+        public void Delete(Guid id)
+        {
+            gameStorageAppContext.Genres.Remove(Get(id));
+            gameStorageAppContext.SaveChanges();
+        }
     }
 }

@@ -33,5 +33,23 @@ namespace Games_Storage_App.Contollers
             genreService.UpdateInfo(genre);
             return RedirectToAction("GetGenres");
         }
+
+        public IActionResult DeleteGenre(Guid genreId)
+        {
+            genreService.DeleteGenre(genreId);
+            return RedirectToAction("GetGenres");
+        }
+
+        public IActionResult AddGenre()
+        {
+            return View(new GenreViewModel {});
+        }
+
+        [HttpPost]
+        public IActionResult AddGenre(GenreViewModel genre)
+        {
+            genreService.AddGenre(genre);
+            return RedirectToAction("GetGenres");
+        }
     }
 }
