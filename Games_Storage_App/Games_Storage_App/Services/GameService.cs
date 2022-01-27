@@ -4,7 +4,6 @@ using Games_Storage_App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Games_Storage_App.Services
 {
@@ -49,26 +48,6 @@ namespace Games_Storage_App.Services
                 gameRepository.Delete(gameId);
             }
         }
-
-        //public GameViewModel AddGenreToGame(GenreViewModel genreViewModel, GameViewModel gameViewModel)
-        //{
-        //    var existingGame = gameRepository.Get(gameViewModel.Id);
-        //    var genre = genreViewModel.ToGenre();
-
-        //    Game game;
-        //    if (existingGame == null)
-        //        game = gameRepository.Create(genre, gameViewModel.ToGameInfo());
-        //    else
-        //        game = gameRepository.AddGenre(existingGame.Id, genre);
-        //    var newGameViewModel = new GameViewModel()
-        //    {
-        //        Id = game.Id,
-        //        Name = game.Name,
-        //        Developer = game.Developer,
-        //        Genres = game.GameGenres.ToGameGenresViewModel()
-        //    };
-        //    return newGameViewModel;
-        //}
 
         public GameViewModel AddGenreToGame(GenreViewModel genreViewModel, GameViewModel gameViewModel)
         {
