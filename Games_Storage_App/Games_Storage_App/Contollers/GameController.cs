@@ -56,5 +56,11 @@ namespace Games_Storage_App.Contollers
             gameService.AddGenreToGame(genreService.GetGenre(genreId), gameService.GetGame(gameId));
             return RedirectToAction("GetGame", new { id = gameId });
         }
+
+        public IActionResult DeleteGame(Guid id)
+        {
+            gameService.DeleteGame(id);
+            return RedirectToAction("GetGames");
+        }
     }
 }

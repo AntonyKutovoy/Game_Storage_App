@@ -41,6 +41,15 @@ namespace Games_Storage_App.Services
             return gameViewModel;
         }
 
+        public void DeleteGame(Guid gameId)
+        {
+            var game = gameRepository.TryGetById(gameId);
+            if (game != null)
+            {
+                gameRepository.Delete(gameId);
+            }
+        }
+
         //public GameViewModel AddGenreToGame(GenreViewModel genreViewModel, GameViewModel gameViewModel)
         //{
         //    var existingGame = gameRepository.Get(gameViewModel.Id);
