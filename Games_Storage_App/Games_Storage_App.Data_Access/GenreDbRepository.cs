@@ -30,5 +30,13 @@ namespace Games_Storage_App.Data_Access
         {
             return gameStorageAppContext.Genres.AsNoTracking().ToList();
         }
+
+        public void Update(Genre genreInfo)
+        {
+            var genre = gameStorageAppContext.Genres.FirstOrDefault(x => x.Id == genreInfo.Id);
+            if (genreInfo.Name != null)
+                genre.Name = genreInfo.Name;
+            gameStorageAppContext.SaveChanges();
+        }
     }
 }

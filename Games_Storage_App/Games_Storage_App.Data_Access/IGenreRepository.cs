@@ -10,5 +10,6 @@ namespace Games_Storage_App.Data_Access
         List<Genre> GetAll();
         void Create(Genre genre);
         Genre Get(Guid id);
+        void Update(Genre genre);
     }
 }

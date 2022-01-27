@@ -34,7 +34,7 @@ namespace Games_Storage_App.Contollers
         public IActionResult ChangeInformation(GameViewModel game)
         {
             gameService.UpdateInfo(game);
-            return RedirectToAction("GetGame", new { id = game.Id }); ;
+            return RedirectToAction("GetGame", new { id = game.Id });
         }
 
         public IActionResult UpdateGenres(Guid id)

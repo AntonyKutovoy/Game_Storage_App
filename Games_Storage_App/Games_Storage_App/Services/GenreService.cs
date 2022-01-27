@@ -37,5 +37,10 @@ namespace Games_Storage_App.Services
             var genre = genreRepository.Get(id);
             return genre.ToGenreViewModel();
         }
+
+        public void UpdateInfo(GenreViewModel genre)
+        {
+            genreRepository.Update(genre.ToGenre());
+        }
     }
 }
