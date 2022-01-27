@@ -33,10 +33,18 @@
                                     <tr class="table-row" data-href="/Game/GetGame/@game.Id">
                                         <td>@game.Name</td>
                                         <td>@game.Developer</td>
-                                        <td>@for (int j = 0; j < game.Genres.Count; j++)
-                                        {
-                                            @game.Genres[j].Genre.Name
-                                        }
+                                        <td>
+                                            @for (int j = 0; j < game.Genres.Count; j++)
+                                            {
+                                                if (j == game.Genres.Count - 1)
+                                                {
+                                                    @game.Genres[j].Genre.Name
+                                                }
+                                                else
+                                                {
+                                                    @game.Genres[j].Genre.Name<small>,</small>
+                                                }
+                                            }
                                         </td>
                                     </tr>
                                 }

@@ -37,7 +37,14 @@
                                 <p class="font-weight-normal">
                                     @for (int j = 0; j < Model.Genres.Count; j++)
                                     {
-                                        @Model.Genres[j].Genre.Name
+                                        if (j == Model.Genres.Count - 1)
+                                        {
+                                            @Model.Genres[j].Genre.Name
+                                        }
+                                        else
+                                        {
+                                            @Model.Genres[j].Genre.Name<small>,</small>
+                                        }
                                     }
                                 </p>
                             </div>

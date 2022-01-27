@@ -11,10 +11,12 @@ namespace Games_Storage_App.Contollers
     public class GameController : Controller
     {
         private readonly GameService gameService;
+        private readonly GenreService genreService;
 
-        public GameController(GameService gameService)
+        public GameController(GameService gameService, GenreService genreService)
         {
             this.gameService = gameService;
+            this.genreService = genreService;
         }
         public IActionResult GetGames()
         {
@@ -40,13 +42,19 @@ namespace Games_Storage_App.Contollers
 
         public IActionResult UpdateGenres(Guid id)
         {
-            return View(gameService.GetGame(id));
+            return View(new GameWithAllGenresViewModel() { Genres = genreService.GetAllGenres(), Game = gameService.GetGame(id) });
         }
 
         public IActionResult DeleteGameGenre(Guid gameGenreId, Guid gameId)
         {
             gameService.DeleteGenre(gameGenreId, gameId);
-            return RedirectToAction("GetGame", new { id = gameId }); ;
+            return RedirectToAction("GetGame", new { id = gameId });
+        }
+
+        public IActionResult AddGenreToGame(Guid genreId, Guid gameId)
+        {
+            gameService.AddGenreToGame(genreService.GetGenre(genreId), gameService.GetGame(gameId));
+            return RedirectToAction("GetGame", new { id = gameId });
         }
     }
 }

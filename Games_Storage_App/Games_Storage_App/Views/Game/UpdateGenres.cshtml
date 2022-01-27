@@ -1,4 +1,4 @@
-﻿@model Games_Storage_App.Models.GameViewModel
+﻿@model Games_Storage_App.Models.GameWithAllGenresViewModel
 
 <div class="row">
     <div class="col-md-3 my-4">
@@ -13,27 +13,46 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4>Жанры игры @Model.Name</h4>
+                        <h4>Жанры игры @Model.Game.Name</h4>
                         <hr />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        @for (int j = 0; j < Model.Genres.Count; j++)
+                        @for (int j = 0; j < Model.Game.Genres.Count; j++)
                         {
-                            var gameGenre = Model.Genres[j];
+                            var gameGenre = Model.Game.Genres[j];
                             <div class="form-group row">
                                 <div class="col-4">
                                     @gameGenre.Genre.Name
                                 </div>
                                 <div class="col-8">
-                                    <a class="btn btn-danger btn-sm" asp-action="DeleteGameGenre" asp-route-gameGenreId="@gameGenre.Id" asp-route-gameId="@Model.Id" role="button">Убрать</a>
+                                    <a class="btn btn-danger btn-sm" asp-action="DeleteGameGenre" asp-route-gameGenreId="@gameGenre.Id" asp-route-gameId="@Model.Game.Id" role="button">Убрать</a>
                                 </div>
                             </div>
                         }
+                        @foreach (var genre in Model.Genres)
+                        {
+                            var isGenrePresentInAllGenres = Model.Game.Genres.Any(x => x.Genre.Id == genre.Id);
+                            if (isGenrePresentInAllGenres)
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                <div class="form-group row">
+                                    <div class="col-4">
+                                        @genre.Name
+                                    </div>
+                                    <div class="col-8">
+                                        <a class="btn btn-success btn-sm" asp-action="AddGenreToGame" asp-route-genreId="@genre.Id" asp-route-gameId="@Model.Game.Id" role="button">Добавить</a>
+                                    </div>
+                                </div>
+                            }
+                        }
                     </div>
                 </div>
-                <a class="text-info" asp-action="GetGame" asp-route-id="@Model.Id"><i class="bi bi-arrow-left mr-2 text-info"></i>Назад</a>
+                <a class="text-info" asp-action="GetGame" asp-route-id="@Model.Game.Id"><i class="bi bi-arrow-left mr-2 text-info"></i>Назад</a>
             </div>
         </div>
     </div>
