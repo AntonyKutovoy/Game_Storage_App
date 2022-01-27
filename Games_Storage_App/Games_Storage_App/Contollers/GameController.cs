@@ -62,5 +62,16 @@ namespace Games_Storage_App.Contollers
             gameService.DeleteGame(id);
             return RedirectToAction("GetGames");
         }
+
+        public IActionResult AddGame()
+        {
+            return View(new GameWithAllGenresViewModel { Genres = genreService.GetAllGenres() });
+        }
+
+        [HttpPost]
+        public IActionResult AddGame(GameViewModel game, Guid genreid)
+        {
+            return RedirectToAction("GetGame", new { id = gameService.AddGenreToGame(genreService.GetGenre(genreid), game).Id } );
+        }
     }
 }
