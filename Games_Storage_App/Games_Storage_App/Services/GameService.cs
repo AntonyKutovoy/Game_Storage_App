@@ -76,5 +76,11 @@ namespace Games_Storage_App.Services
             var gameGenre = existingGame.GameGenres.FirstOrDefault(x => x.Id == gameGenreId);
             gameRepository.DeleteGenre(existingGame, gameGenre.Genre);
         }
+
+        public List<GameViewModel> SearchByGenre(Guid genreId)
+        {
+            var allGames = gameRepository.GetAll();
+            return (allGames.SelectMany(game => game.GameGenres.Where(gameGenre => gameGenre.GenreId == genreId).Select(gameGenre => game.ToGameViewModel()))).ToList();
+        }
     }
 }

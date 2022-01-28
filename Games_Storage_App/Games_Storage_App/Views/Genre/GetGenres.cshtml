@@ -5,7 +5,6 @@
         <div class="list-group ">
             <a asp-controller="Game" asp-action="GetGames" class="list-group-item list-group-item-action">Список игр</a>
             <a asp-controller="Genre" asp-action="GetGenres" class="list-group-item list-group-item-action">Список жанров</a>
-            <a class="list-group-item list-group-item-action">Поиск по жанрам</a>
         </div>
     </div>
     <div class="col-md-9 my-4">
@@ -26,6 +25,7 @@
                                     <td>@genre.Name</td>
                                     <td><a class="btn btn-success btn-sm" asp-action="ChangeInformation" asp-route-genreId="@genre.Id" role="button">Изменить</a></td>
                                     <td><a class="btn btn-danger btn-sm" asp-action="DeleteGenre" asp-route-genreId="@genre.Id" role="button">Удалить</a></td>
+                                    <td><a class="btn btn-warning btn-sm" asp-controller="Game" asp-action="SearchByGenre" asp-route-genreId="@genre.Id" role="button">Найти игры</a></td>
                                 </tr>
                                 }
                             </tbody>

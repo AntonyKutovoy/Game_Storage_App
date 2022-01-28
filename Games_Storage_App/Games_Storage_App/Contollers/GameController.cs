@@ -17,8 +17,7 @@ namespace Games_Storage_App.Contollers
         }
         public IActionResult GetGames()
         {
-            var games = gameService.GetAllGames();
-            return View(games);
+            return View(gameService.GetAllGames());
         }
         public IActionResult GetGame(Guid id)
         {
@@ -69,6 +68,11 @@ namespace Games_Storage_App.Contollers
         public IActionResult AddGame(GameViewModel game, Guid genreid)
         {
             return RedirectToAction("GetGame", new { id = gameService.AddGenreToGame(genreService.GetGenre(genreid), game).Id } );
+        }
+
+        public IActionResult SearchByGenre(Guid genreId)
+        {
+            return View(gameService.SearchByGenre(genreId));
         }
     }
 }
